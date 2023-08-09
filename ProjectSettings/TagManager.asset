@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerCharacter
+  - Monster
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,9 @@ TagManager:
     locked: 0
   - name: Item Drop
     uniqueID: 3585807015
+    locked: 0
+  - name: Bullet
+    uniqueID: 864541737
     locked: 0
   - name: Game World UI
     uniqueID: 1678369905

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,7 +24,7 @@ namespace Script.Player_Controller
             var verticalValue = m_movementInput.y;
             var speedValue = m_movementInput.sqrMagnitude;
             
-            m_playerAnimationController.PlayAnimation(horizontalValue, verticalValue, speedValue);
+            m_playerAnimationController.PlayMovementAnimation(horizontalValue, verticalValue, speedValue);
         }
 
         private void FixedUpdate()

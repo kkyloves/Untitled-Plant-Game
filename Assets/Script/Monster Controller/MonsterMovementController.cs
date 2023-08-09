@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Script.Monster_Controller
@@ -7,13 +6,15 @@ namespace Script.Monster_Controller
     {
         [SerializeField] private Transform m_playerTransform;
         [SerializeField] private float m_movementSpeed;
-        
+
+        private SpriteRenderer m_spriteRenderer;
         private Rigidbody2D m_monsterRigidbody;
         private Vector2 m_movementDirection;
 
         private void Awake()
         {
             m_monsterRigidbody = GetComponent<Rigidbody2D>();
+            m_spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         private void Update()
@@ -21,9 +22,8 @@ namespace Script.Monster_Controller
             if (m_playerTransform)
             {
                 var direction = (m_playerTransform.position - transform.position).normalized;
-                var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                m_monsterRigidbody.rotation = angle;
                 m_movementDirection = direction;
+                m_spriteRenderer.flipX = m_playerTransform.position.x < transform.position.x;
             }
         }
 
