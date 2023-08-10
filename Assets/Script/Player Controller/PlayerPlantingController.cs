@@ -25,7 +25,7 @@ namespace Script.Player_Controller
             var plantTo = ObjectPoolManager.Instance.PlantItemObjectPool.GetPlantItem();
             if (plantTo)
             {
-                plantTo.Init(m_randomPlantItemDetails.FullGrownSprite, m_plantPosition.position);
+                plantTo.Init(m_randomPlantItemDetails.FullGrownSprite, m_plantPosition.position, m_randomPlantItemDetails.PlantSkill);
             }
             else
             {

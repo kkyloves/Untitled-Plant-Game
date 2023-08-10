@@ -1,4 +1,3 @@
-using System;
 using Script.Object_Pool;
 using UnityEngine;
 
@@ -10,6 +9,12 @@ namespace Script.Managers
         
         [SerializeField] private PlantItemObjectPool m_plantItemObjectPool;
         public PlantItemObjectPool PlantItemObjectPool => m_plantItemObjectPool;
+        
+        [SerializeField] private PlantBulletItemObjectPool m_plantBulletItemObjectPool;
+        public PlantBulletItemObjectPool PlantBulletItemObjectPool => m_plantBulletItemObjectPool;
+        
+        [SerializeField] private MonsterObjectPool m_monsterObjectPool;
+        public MonsterObjectPool MonsterObjectPool => m_monsterObjectPool;
 
         private void Awake()
         {
