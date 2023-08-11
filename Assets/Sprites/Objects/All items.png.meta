@@ -735,7 +735,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All items_30
+      name: apple
       rect:
         serializedVersion: 2
         x: 16
@@ -2133,7 +2133,6 @@ TextureImporter:
       All items_28: 402848652
       All items_29: -244561738
       All items_3: -562984899
-      All items_30: 662042165
       All items_31: -2072962442
       All items_32: -1926810669
       All items_33: 788936523
@@ -2204,6 +2203,7 @@ TextureImporter:
       All items_92: 741456080
       All items_93: -925272713
       All items_94: 916333120
+      apple: 662042165
       seed loot base item: -1207015718
   spritePackingTag: 
   pSDRemoveMatte: 0

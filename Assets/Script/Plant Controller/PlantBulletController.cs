@@ -17,14 +17,14 @@ namespace Script.Plant_Controller
             m_rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
-        public void Init(Transform p_targetMonster, Vector2 p_position)
+        public void Init(Vector3 p_targetMonster, Vector2 p_position)
         {
             m_isDeployed = true;
             
             transform.position = new Vector2(p_position.x, p_position.y);
             gameObject.SetActive(true);
             
-            var direction = (p_targetMonster.transform.position - transform.position).normalized;
+            var direction = (p_targetMonster - transform.position).normalized;
             m_rigidbody2D.AddForce(direction * BULLET_SPEED, ForceMode2D.Impulse);
         }
 
@@ -33,6 +33,11 @@ namespace Script.Plant_Controller
             if (p_collided.CompareTag("Monster"))
             {
                 p_collided.GetComponent<MonsterHealthController>().DamageMonster(30f, false);
+                Disappear();
+            }
+            
+            if(p_collided.CompareTag("Border"))
+            {
                 Disappear();
             }
         }

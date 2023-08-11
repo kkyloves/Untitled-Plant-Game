@@ -31,6 +31,11 @@ namespace Script.Player_Controller
         public void HealPlayerHealth(float p_healAmount)
         {
             m_playerCurrentHealth += p_healAmount;
+            if (m_playerCurrentHealth >= PLAYER_BASE_HEALTH)
+            {
+                m_playerCurrentHealth = PLAYER_BASE_HEALTH;
+            }
+            
             UpdatePlayerHealthBar();
         }
 

@@ -483,7 +483,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushrooms, Flowers, Stones_18
+      name: bush
       rect:
         serializedVersion: 2
         x: 48
@@ -693,7 +693,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushrooms, Flowers, Stones_28
+      name: angel 1
       rect:
         serializedVersion: 2
         x: 112
@@ -819,7 +819,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushrooms, Flowers, Stones_34
+      name: angel 2
       rect:
         serializedVersion: 2
         x: 112
@@ -1070,7 +1070,6 @@ TextureImporter:
       Mushrooms, Flowers, Stones_15: 1001337413
       Mushrooms, Flowers, Stones_16: -2115511332
       Mushrooms, Flowers, Stones_17: 2012302894
-      Mushrooms, Flowers, Stones_18: -246165918
       Mushrooms, Flowers, Stones_19: 519676015
       Mushrooms, Flowers, Stones_2: 1717175488
       Mushrooms, Flowers, Stones_20: -569663524
@@ -1081,13 +1080,11 @@ TextureImporter:
       Mushrooms, Flowers, Stones_25: 1030679400
       Mushrooms, Flowers, Stones_26: 1776776974
       Mushrooms, Flowers, Stones_27: 2099778391
-      Mushrooms, Flowers, Stones_28: -732479319
       Mushrooms, Flowers, Stones_29: 851606536
       Mushrooms, Flowers, Stones_30: -350623786
       Mushrooms, Flowers, Stones_31: -1477760921
       Mushrooms, Flowers, Stones_32: 237479222
       Mushrooms, Flowers, Stones_33: 1187656391
-      Mushrooms, Flowers, Stones_34: -2075154237
       Mushrooms, Flowers, Stones_35: -159432225
       Mushrooms, Flowers, Stones_36: -1978615903
       Mushrooms, Flowers, Stones_37: 1915554585
@@ -1103,6 +1100,9 @@ TextureImporter:
       Mushrooms, Flowers, Stones_7: 208441034
       Mushrooms, Flowers, Stones_8: 430616098
       Mushrooms, Flowers, Stones_9: 1459888301
+      angel 1: -732479319
+      angel 2: -2075154237
+      bush: -246165918
       mushroom seed: -747229125
       mushroom seed 2: 428685658
   spritePackingTag: 

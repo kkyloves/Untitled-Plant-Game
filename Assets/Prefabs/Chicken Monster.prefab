@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6910672308496149206}
   - component: {fileID: 6910672308496149207}
   - component: {fileID: 405773004877215580}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chicken Monster
   m_TagString: Monster
   m_Icon: {fileID: 0}

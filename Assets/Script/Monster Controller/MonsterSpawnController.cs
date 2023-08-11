@@ -24,7 +24,7 @@ namespace Script.Monster_Controller
 
             var player = PlayerGeneralController.Instance;
             monster.GetComponent<MonsterMovementController>().SetTarget(player.transform);
-            monster.GetComponent<MonsterDamageController>().SetPlayerHealthController(player.PlayerHealthController);
+            monster.GetComponent<MonsterDamageController>().SetPlayerHealthController(player);
             monster.GetComponent<MonsterHealthController>().Reset();
 
             monster.SetActive(true);

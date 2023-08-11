@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerCharacter
   - Monster
+  - Border
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Border
+  - Monster
   - 
   - 
   - 
@@ -54,4 +55,7 @@ TagManager:
     locked: 0
   - name: Game World UI
     uniqueID: 1678369905
+    locked: 0
+  - name: Environment
+    uniqueID: 3576881373
     locked: 0

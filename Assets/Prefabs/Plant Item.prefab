@@ -315,7 +315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_plantTransform: {fileID: 3468894589599622503}
-  m_firePoint: {fileID: 0}
 --- !u!1 &1262729588839167216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,6 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11856ebed1efe164daaa328a219c32fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_damage: 5
 --- !u!1 &6225916262713062523
 GameObject:
   m_ObjectHideFlags: 0

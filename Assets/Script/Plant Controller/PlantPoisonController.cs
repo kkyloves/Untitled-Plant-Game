@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using Script.Monster_Controller;
 using UnityEngine;
@@ -7,6 +6,8 @@ namespace Script.Plant_Controller
 {
     public class PlantPoisonController : MonoBehaviour
     {
+        [SerializeField] private float m_damage;
+        [SerializeField] private float m_maxIncreaseRange = 5f;
         private void Awake()
         {
             PlayPoisonAnimation();
@@ -14,11 +15,11 @@ namespace Script.Plant_Controller
 
         private void PlayPoisonAnimation()
         {
-            transform.DOScale(4f, 0f);
+            transform.DOScale(m_maxIncreaseRange -1f, 0f);
 
-            transform.DOScale(5f, 1f).OnComplete(() =>
+            transform.DOScale(m_maxIncreaseRange, 1f).OnComplete(() =>
             {
-                transform.DOScale(4f, 1f);
+                transform.DOScale(m_maxIncreaseRange - 1f, 1f);
             }).SetLoops(-1, LoopType.Yoyo);
         }
 
@@ -29,7 +30,7 @@ namespace Script.Plant_Controller
                 var monsterHealthController = p_collided.GetComponent<MonsterHealthController>();
                 if (monsterHealthController != null)
                 {
-                    monsterHealthController.DamageMonster(5f, true);
+                    monsterHealthController.DamageMonster(m_damage, true);
                 }
                 else
                 {

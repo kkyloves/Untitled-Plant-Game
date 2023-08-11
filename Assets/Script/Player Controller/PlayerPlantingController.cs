@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using Script.Managers;
 using Script.Scriptable_Object;
 using UnityEngine;
@@ -17,21 +18,27 @@ namespace Script.Player_Controller
 
     public class PlayerPlantingController : MonoBehaviour
     {
-        private const int INITIAL_SEED_COUNT = 1;
+        private const int INITIAL_SEED_COUNT = 2;
 
         [SerializeField] private PlantItemDetails[] m_plantItemDetails;
         [SerializeField] private SpriteRenderer m_sproutSpriteRenderer;
+        
         [SerializeField] private Sprite m_warningNoSeedSign;
         [SerializeField] private Image m_seedIconToChoose;
+        [SerializeField] private GameObject m_seedIconUI;
+        [SerializeField] private Transform m_seedTopAnimationTopPoint;
+        [SerializeField] private Transform m_seedTopAnimationBottomPoint;
+
+        [SerializeField] private GameObject m_angelPlants;
 
         private PlayerAnimationController m_playerAnimationController;
-        public List<PlantContainer> m_plantContainer;
+        private List<PlantContainer> m_plantContainer;
 
         public Transform m_plantPosition;
 
         private PlantContainer m_currentChosenPlantContainer;
         private int m_currentChosenIndexPlantContainer;
-
+        
         private bool m_isPlanting;
 
         private void Awake()
@@ -84,6 +91,8 @@ namespace Script.Player_Controller
                     m_currentChosenIndexPlantContainer = 0;
                     m_currentChosenPlantContainer = m_plantContainer[m_currentChosenIndexPlantContainer];
                     SetPlantChoiceUI();
+                    
+                    m_angelPlants.SetActive(false);
                 }
             }
         }
@@ -126,6 +135,7 @@ namespace Script.Player_Controller
                     {
                         m_seedIconToChoose.sprite = m_warningNoSeedSign;
                         m_currentChosenIndexPlantContainer = 0;
+                        m_angelPlants.SetActive(true);
                     }
                 }
             }
@@ -143,15 +153,21 @@ namespace Script.Player_Controller
         private void OnChoosePlant()
         {
             if (m_plantContainer.Count > 0)
-            {
-                m_currentChosenIndexPlantContainer++;
-                if (m_currentChosenIndexPlantContainer >= m_plantContainer.Count)
+            {                       
+                m_seedIconUI.transform.DOLocalMoveY(m_seedTopAnimationBottomPoint.localPosition.y, 0f);
+                m_seedIconUI.transform.DOLocalMoveY(m_seedTopAnimationTopPoint.localPosition.y, 0.1f).OnComplete(() =>
                 {
-                    m_currentChosenIndexPlantContainer = 0;
-                }
+                    m_currentChosenIndexPlantContainer++;
+                    if (m_currentChosenIndexPlantContainer >= m_plantContainer.Count)
+                    {
+                        m_currentChosenIndexPlantContainer = 0;
+                    }
 
-                m_currentChosenPlantContainer = m_plantContainer[m_currentChosenIndexPlantContainer];
-                SetPlantChoiceUI();
+                    m_currentChosenPlantContainer = m_plantContainer[m_currentChosenIndexPlantContainer];
+                    SetPlantChoiceUI();
+
+                    m_seedIconUI.transform.DOLocalMoveY(m_seedTopAnimationBottomPoint.localPosition.y, 0.1f);
+                });
             }
             else
             {

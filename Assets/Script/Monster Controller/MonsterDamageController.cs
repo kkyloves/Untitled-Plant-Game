@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Script.Player_Controller;
 using UnityEngine;
@@ -9,31 +10,43 @@ namespace Script.Monster_Controller
         private const float TIMER_TO_INFLICT_DAMAGE_TO_PLAYER = 0.3F;
         private const string PLAYER_TAG = "PlayerCharacter";
 
-        private PlayerHealthController m_playerHealthController;
+        private PlayerGeneralController m_playerGeneralController;
 
         private float m_monsterDamage = 5f;
         private bool m_isCollidedWithThePlayer;
 
-        public void SetPlayerHealthController(PlayerHealthController p_playerHealthController)
+        private MonsterHealthController m_monsterHealthController;
+
+        private void Awake()
         {
-            m_playerHealthController = p_playerHealthController;
+            m_monsterHealthController = GetComponent<MonsterHealthController>();
         }
 
-
+        public void SetPlayerHealthController(PlayerGeneralController p_playerGeneralController)
+        {
+            m_playerGeneralController = p_playerGeneralController;
+        }
+        
         private void OnCollisionEnter2D(Collision2D p_collided)
         {
-            if (p_collided.gameObject.CompareTag(PLAYER_TAG))
+            if (!m_monsterHealthController.IsDead)
             {
-                m_isCollidedWithThePlayer = true;
-                StartCoroutine(InflictDamageToPlayer());
+                if (p_collided.gameObject.CompareTag(PLAYER_TAG))
+                {
+                    m_isCollidedWithThePlayer = true;
+                    StartCoroutine(InflictDamageToPlayer());
+                }
             }
         }
 
         private void OnCollisionExit2D(Collision2D p_collided)
         {
-            if (p_collided.gameObject.CompareTag(PLAYER_TAG))
+            if (!m_monsterHealthController.IsDead)
             {
-                m_isCollidedWithThePlayer = false;
+                if (p_collided.gameObject.CompareTag(PLAYER_TAG))
+                {
+                    m_isCollidedWithThePlayer = false;
+                }
             }
         }
 
@@ -41,7 +54,7 @@ namespace Script.Monster_Controller
         {
             while (m_isCollidedWithThePlayer)
             {
-                m_playerHealthController.InflictPlayerHealth(m_monsterDamage);
+                m_playerGeneralController.InflictPlayerHealth(m_monsterDamage);
                 yield return new WaitForSeconds(TIMER_TO_INFLICT_DAMAGE_TO_PLAYER);
             }
         }

@@ -8,11 +8,7 @@ namespace Script.Player_Controller
         public static PlayerGeneralController Instance;
 
         [SerializeField] private PlayerHealthController m_playerHealthController;
-        public PlayerHealthController PlayerHealthController => m_playerHealthController;
-
         [SerializeField] private PlayerPlantingController m_playerPlantingController;
-        public PlayerPlantingController PlayerPlantingController => m_playerPlantingController;
-        
         
         private void Awake()
         {
@@ -29,6 +25,16 @@ namespace Script.Player_Controller
         public void AddSeedCount(PlantItemDetails p_lootedPlantItemDetails, int p_seedCount)
         {
             m_playerPlantingController.AddSeedCount(p_lootedPlantItemDetails, p_seedCount);
+        }
+
+        public void HealPlayerHealth(float p_healAmount)
+        {
+            m_playerHealthController.HealPlayerHealth(p_healAmount);
+        }
+
+        public void InflictPlayerHealth(float p_damage)
+        {
+            m_playerHealthController.InflictPlayerHealth(p_damage);
         }
     }
 }
