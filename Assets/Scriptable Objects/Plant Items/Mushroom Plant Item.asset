@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Mushroom Plant Item
   m_EditorClassIdentifier: 
   m_plantId: Mushroom
-  m_plantSproutSprite: {fileID: -876848744, guid: 31a2b663e33d6d04ba5a69b91e66c492, type: 3}
+  m_plantSproutSprite: {fileID: 428685658, guid: 31a2b663e33d6d04ba5a69b91e66c492, type: 3}
   m_fullGrownSprite: {fileID: 208441034, guid: 31a2b663e33d6d04ba5a69b91e66c492, type: 3}
   m_plantSkill: 1

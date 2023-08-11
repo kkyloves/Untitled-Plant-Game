@@ -168,7 +168,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushrooms, Flowers, Stones_3
+      name: mushroom seed
       rect:
         serializedVersion: 2
         x: 52
@@ -231,7 +231,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushrooms, Flowers, Stones_6
+      name: mushroom seed 2
       rect:
         serializedVersion: 2
         x: 81
@@ -1083,7 +1083,6 @@ TextureImporter:
       Mushrooms, Flowers, Stones_27: 2099778391
       Mushrooms, Flowers, Stones_28: -732479319
       Mushrooms, Flowers, Stones_29: 851606536
-      Mushrooms, Flowers, Stones_3: -747229125
       Mushrooms, Flowers, Stones_30: -350623786
       Mushrooms, Flowers, Stones_31: -1477760921
       Mushrooms, Flowers, Stones_32: 237479222
@@ -1101,10 +1100,11 @@ TextureImporter:
       Mushrooms, Flowers, Stones_43: -1472505852
       Mushrooms, Flowers, Stones_44: -226019574
       Mushrooms, Flowers, Stones_5: -876848744
-      Mushrooms, Flowers, Stones_6: 428685658
       Mushrooms, Flowers, Stones_7: 208441034
       Mushrooms, Flowers, Stones_8: 430616098
       Mushrooms, Flowers, Stones_9: 1459888301
+      mushroom seed: -747229125
+      mushroom seed 2: 428685658
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

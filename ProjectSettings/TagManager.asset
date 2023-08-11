@@ -46,6 +46,9 @@ TagManager:
   - name: Item Drop
     uniqueID: 3585807015
     locked: 0
+  - name: Monster
+    uniqueID: 1317507189
+    locked: 0
   - name: Bullet
     uniqueID: 864541737
     locked: 0

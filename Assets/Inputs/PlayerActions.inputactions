@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Plant",
+                    "name": "ChoosePlant",
                     "type": "Button",
                     "id": "669c95e5-3257-4d6a-9f11-031595b92e33",
                     "expectedControlType": "Button",
@@ -279,7 +279,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Plant",
+                    "action": "ChoosePlant",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

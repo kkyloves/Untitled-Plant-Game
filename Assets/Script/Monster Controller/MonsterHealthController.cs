@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using Script.Loot_Controller;
 using UnityEngine;
 
 namespace Script.Monster_Controller
@@ -82,6 +83,8 @@ namespace Script.Monster_Controller
                 {
                     m_isDead = true;
                     StopAllCoroutines();
+                    
+                    LootItemSpawnController.Instance.SpawnLootItems(transform.position);
                     gameObject.SetActive(false);
                 }
             }

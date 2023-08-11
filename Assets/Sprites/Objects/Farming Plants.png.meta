@@ -819,7 +819,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Squash Sprout
+      name: squash seed
       rect:
         serializedVersion: 2
         x: 17
@@ -827,7 +827,7 @@ TextureImporter:
         width: 12
         height: 12
       alignment: 9
-      pivot: {x: 0.5, y: 0.3}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1302,7 +1302,7 @@ TextureImporter:
       Farming Plants_8: -1010930497
       Farming Plants_9: -284643429
       Squash: 731064333
-      Squash Sprout: 105608064
+      squash seed: 105608064
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

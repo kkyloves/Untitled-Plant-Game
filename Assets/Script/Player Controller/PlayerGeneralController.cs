@@ -1,3 +1,4 @@
+using Script.Scriptable_Object;
 using UnityEngine;
 
 namespace Script.Player_Controller
@@ -8,6 +9,10 @@ namespace Script.Player_Controller
 
         [SerializeField] private PlayerHealthController m_playerHealthController;
         public PlayerHealthController PlayerHealthController => m_playerHealthController;
+
+        [SerializeField] private PlayerPlantingController m_playerPlantingController;
+        public PlayerPlantingController PlayerPlantingController => m_playerPlantingController;
+        
         
         private void Awake()
         {
@@ -19,6 +24,11 @@ namespace Script.Player_Controller
             { 
                 Instance = this; 
             } 
+        }
+
+        public void AddSeedCount(PlantItemDetails p_lootedPlantItemDetails, int p_seedCount)
+        {
+            m_playerPlantingController.AddSeedCount(p_lootedPlantItemDetails, p_seedCount);
         }
     }
 }

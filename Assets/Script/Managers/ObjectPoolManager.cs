@@ -15,6 +15,9 @@ namespace Script.Managers
         
         [SerializeField] private MonsterObjectPool m_monsterObjectPool;
         public MonsterObjectPool MonsterObjectPool => m_monsterObjectPool;
+        
+        [SerializeField] private LootItemObjectPool m_lootItemObjectPool;
+        public LootItemObjectPool LootItemObjectPool => m_lootItemObjectPool;
 
         private void Awake()
         {

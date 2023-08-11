@@ -10,6 +10,8 @@ namespace Script.Player_Controller
         private static readonly int PlayerVertical = Animator.StringToHash("PlayerVertical");
         private static readonly int PlayerSpeed = Animator.StringToHash("PlayerSpeed");
         private static readonly int PlayerPlanting = Animator.StringToHash("PlayerPlanting");
+        private static readonly int StopPlanting = Animator.StringToHash("StopPlanting");
+
 
         private void Awake()
         {
@@ -26,6 +28,11 @@ namespace Script.Player_Controller
         public void PlayPlantingAnimation()
         {
             m_playerAnimator.SetTrigger(PlayerPlanting);
+        }
+        
+        public void ResetPlantingAnimation()
+        {
+            m_playerAnimator.SetTrigger(StopPlanting);
         }
     }
 }
