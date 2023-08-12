@@ -4,6 +4,7 @@ using DG.Tweening;
 using Script.Player_Controller;
 using Script.Scriptable_Object;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Script.Loot_Controller
 {
@@ -53,6 +54,9 @@ namespace Script.Loot_Controller
             }
 
             transform.position = new Vector2(p_spawnPosition.x, p_spawnPosition.y);
+            var jumpPosition = new Vector2(p_spawnPosition.x + Random.Range(-1f, 1f),
+                p_spawnPosition.y + Random.Range(-1f , 1f));
+            transform.DOMove(jumpPosition, 0.1f);
             gameObject.SetActive(true);
 
             StartCoroutine(ActivateLootCollider());

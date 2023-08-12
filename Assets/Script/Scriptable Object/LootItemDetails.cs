@@ -13,6 +13,7 @@ namespace Script.Scriptable_Object
         [ShowIf("m_lootType", LootType.Seed)] [SerializeField] private PlantItemDetails m_plantItemDetails;
         [SerializeField] private float m_chanceToSpawn = 50f;
 
+        public string LootId => m_lootId;
         public LootType LootType => m_lootType;
         public Sprite LootSprite => m_lootSprite;
         public float ChanceToSpawn => m_chanceToSpawn;
