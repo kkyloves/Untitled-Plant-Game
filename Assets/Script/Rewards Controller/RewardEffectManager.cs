@@ -1,4 +1,5 @@
 using Script.Loot_Controller;
+using Script.Managers;
 using Script.Monster_Controller;
 using Script.Plant_Controller;
 using Script.Player_Controller;
@@ -6,10 +7,8 @@ using UnityEngine;
 
 namespace Script.Rewards_Controller
 {
-    public class RewardEffectController : MonoBehaviour
+    public class RewardEffectManager : MonoBehaviour
     {
-        public static RewardEffectController Instance;
-        
         //squash related rewards
         private bool m_isProjectile;
         private float m_shootTimer = 0.8f;
@@ -28,19 +27,7 @@ namespace Script.Rewards_Controller
         //player related rewards
         private float m_moveSpeed = 5f;
         private float m_plantAnimationSpeed = 1f;
-
-        private void Awake()
-        {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                Instance = this;
-            }
-        }
-
+        
         public void TurnOnProjectileEffect()
         {
             m_isProjectile = true;
@@ -106,9 +93,9 @@ namespace Script.Rewards_Controller
             p_monsterMovementController.SetSlowEffect(m_movementPoisonSlowEffect);
         }
 
-        public void UpdateLoot(LootItemController p_lootItemController)
+        public void UpdateLoot(LootItemController p_lootItemManager)
         {
-            p_lootItemController.SetHealEffect(m_healEffect);
+            p_lootItemManager.SetHealEffect(m_healEffect);
         }
 
         public void UpdatePlayer(PlayerGeneralController p_playerGeneralController)
@@ -119,7 +106,7 @@ namespace Script.Rewards_Controller
 
         public void AddLootChance(string p_lootId)
         {
-            LootItemSpawnController.Instance.AddLootChance(p_lootId);
+            GameManager.Instance.LootItemManager.AddLootChance(p_lootId);
         }
     }
 }

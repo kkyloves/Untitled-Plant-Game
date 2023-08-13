@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using Script.Managers;
 using UnityEngine;
@@ -14,12 +15,13 @@ namespace Script.UI_Controller
 
         private float m_currentMaxExp;
         private float m_currentExp;
-
+        
         private void Awake()
         {
             m_levelUpImage.DOFillAmount(0f, 0f);
             m_currentMaxExp = BASE_MAX_EXP;
         }
+        
 
         public void AddExp()
         {
@@ -38,7 +40,7 @@ namespace Script.UI_Controller
         private void LevelUpPlayer()
         {
             // open level up reward
-            UIManager.Instance.OpenRewardPanel();
+            GameManager.Instance.UIManager.OpenRewardPanel();
             
             m_currentExp = 0;
             m_currentMaxExp += ADDITIONAL_EXP * 2;

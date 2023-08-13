@@ -5,8 +5,6 @@ namespace Script.Managers
 {
     public class ObjectPoolManager : MonoBehaviour
     {
-        public static ObjectPoolManager Instance;
-        
         [SerializeField] private PlantItemObjectPool m_plantItemObjectPool;
         public PlantItemObjectPool PlantItemObjectPool => m_plantItemObjectPool;
         
@@ -18,17 +16,5 @@ namespace Script.Managers
         
         [SerializeField] private LootItemObjectPool m_lootItemObjectPool;
         public LootItemObjectPool LootItemObjectPool => m_lootItemObjectPool;
-
-        private void Awake()
-        {
-            if (Instance != null && Instance != this) 
-            { 
-                Destroy(this); 
-            } 
-            else 
-            { 
-                Instance = this; 
-            } 
-        }
     }
 }

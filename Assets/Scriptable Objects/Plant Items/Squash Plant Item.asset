@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7977588f542cd7749af50f5ac372c545, type: 3}
   m_Name: Squash Plant Item
   m_EditorClassIdentifier: 
-  m_plantId: Sunflower
+  m_plantId: Squash
   m_plantSproutSprite: {fileID: 105608064, guid: 456f1bcbf143c224f8669a73bc718309, type: 3}
   m_fullGrownSprite: {fileID: 731064333, guid: 456f1bcbf143c224f8669a73bc718309, type: 3}
+  m_plantSkill: 0

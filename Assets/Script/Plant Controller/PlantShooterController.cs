@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using Script.Managers;
 using Script.Monster_Controller;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Script.Plant_Controller
 {
@@ -16,7 +18,7 @@ namespace Script.Plant_Controller
         private float m_canShootTimer = 0.8f;
         private bool m_isProjectile = true;
         private float m_damage = 20f;
-
+        
         public void Init()
         {
             m_monsterPosition = null;
@@ -49,7 +51,7 @@ namespace Script.Plant_Controller
                     for (var i = 0; i < Random.Range(3, 7); i++)
                     {
                         var updatedMonsterPosition = new Vector2(m_monsterPosition.position.x + i, m_monsterPosition.position.y  + i);
-                        var bullet = ObjectPoolManager.Instance.PlantBulletItemObjectPool.GetPlantBulletItem();
+                        var bullet = GameManager.Instance.ObjectPoolManager.PlantBulletItemObjectPool.GetPlantBulletItem();
                         bullet.transform.position = new Vector2(transform.position.x, transform.position.y);
                         
                         bullet.Init(updatedMonsterPosition,transform.position, m_damage);
@@ -57,7 +59,7 @@ namespace Script.Plant_Controller
                 }
                 else
                 {
-                    var bullet = ObjectPoolManager.Instance.PlantBulletItemObjectPool.GetPlantBulletItem();
+                    var bullet = GameManager.Instance.ObjectPoolManager.PlantBulletItemObjectPool.GetPlantBulletItem();
                     bullet.transform.position = new Vector2(transform.position.x, transform.position.y);
                     
                     bullet.Init(m_monsterPosition.position,transform.position, m_damage);

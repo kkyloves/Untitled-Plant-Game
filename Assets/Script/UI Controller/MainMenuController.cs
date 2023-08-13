@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class MainMenuController : MonoBehaviour
+namespace Script.UI_Controller
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MainMenuController : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Button m_playButton;
+        [SerializeField] private Button m_quitButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Awake()
+        {
+            m_playButton.onClick.AddListener(OnClickPlayButton);
+            m_quitButton.onClick.AddListener(OnClickQuitButton);
+        }
+
+        private void OnClickPlayButton()
+        {
+            SceneManager.LoadScene("Game Scene");
+        }
+
+        private void OnClickQuitButton()
+        {
+            Application.Quit();
+        }
     }
 }

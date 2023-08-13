@@ -285,11 +285,33 @@
                 },
                 {
                     "name": "",
+                    "id": "fc0fc91d-7a90-4864-8a53-93af97dfcd4b",
+                    "path": "<DualShockGamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChoosePlant",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d506ef7f-d49e-4d2f-8f7a-945bd35d30ce",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "PlantHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e119c88f-852e-4226-ba41-43c422584dde",
+                    "path": "<DualShockGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "PlantHold",
                     "isComposite": false,
                     "isPartOfComposite": false

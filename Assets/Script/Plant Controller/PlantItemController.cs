@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Script.Managers;
 using Script.Rewards_Controller;
 using Script.Scriptable_Object;
 using UnityEngine;
@@ -19,14 +20,15 @@ namespace Script.Plant_Controller
 
         public void Init(Sprite p_sprite, Vector2 p_position, PlantSkill p_plantSkill)
         {
+            gameObject.SetActive(true);
+
             m_isPlanted = true;
-            
-            ActivatePlantEffect(p_plantSkill);
             
             m_plantSpriteRenderer.sprite = p_sprite;
             transform.position = new Vector2(p_position.x, p_position.y);
             
-            gameObject.SetActive(true);
+            ActivatePlantEffect(p_plantSkill);
+
             StartCoroutine(StartSelfDisappearTimer());
         }
 
@@ -40,7 +42,7 @@ namespace Script.Plant_Controller
                         m_plantPoisonController.gameObject.SetActive(false);
                         
                         m_plantShooterController.Init();
-                        RewardEffectController.Instance.UpdateSquash(m_plantShooterController);
+                        GameManager.Instance.RewardEffectManager.UpdateSquash(m_plantShooterController);
                     }
                     break;
                 case PlantSkill.Poison:
@@ -48,7 +50,7 @@ namespace Script.Plant_Controller
                         m_plantShooterController.gameObject.SetActive(false);
                         m_plantPoisonController.gameObject.SetActive(true);
                         
-                        RewardEffectController.Instance.UpdateMushroom(m_plantPoisonController);
+                        GameManager.Instance.RewardEffectManager.UpdateMushroom(m_plantPoisonController);
                     }
                     break;
                 default:
@@ -62,7 +64,7 @@ namespace Script.Plant_Controller
             Disappear();
         }
 
-        public void Disappear()
+        private void Disappear()
         {
             m_isPlanted = false;
             gameObject.SetActive(false);

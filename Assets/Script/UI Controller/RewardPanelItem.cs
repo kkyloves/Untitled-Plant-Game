@@ -16,14 +16,14 @@ namespace Script.UI_Controller
 
         private RewardEffect m_rewardEffect;
         private RewardItemDetails m_currentRewardItemDetails;
-
+        
         private int m_rewardListIndex;
         
         private void Awake()
         {
             m_rewardButton.onClick.AddListener(AddRewardButtonListener);
         }
-
+        
         public void Init(RewardItemDetails p_rewardItemDetails, int p_rewardListIndex)
         {
             m_rewardListIndex = p_rewardListIndex;
@@ -38,67 +38,67 @@ namespace Script.UI_Controller
             {
                 case RewardEffect.AddLootChance:
                 {
-                    RewardEffectController.Instance.AddLootChance(m_currentRewardItemDetails.LootItemDetails.LootId);
+                    GameManager.Instance.RewardEffectManager.AddLootChance(m_currentRewardItemDetails.LootItemDetails.LootId);
                 }
                     break;
                 case RewardEffect.MoveSpeed:
                 {
-                    RewardEffectController.Instance.AddMoveSpeed();
-                    RewardEffectController.Instance.UpdatePlayer(PlayerGeneralController.Instance);
+                    GameManager.Instance.RewardEffectManager.AddMoveSpeed();
+                    GameManager.Instance.RewardEffectManager.UpdatePlayer(GameManager.Instance.PlayerGeneralController);
                 }
                     break;
                 case RewardEffect.Projectile:
                 {
-                    RewardEffectController.Instance.TurnOnProjectileEffect();
+                    GameManager.Instance.RewardEffectManager.TurnOnProjectileEffect();
                 }
                     break;
                 case RewardEffect.AllAddDamage:
                 {
-                    RewardEffectController.Instance.AddPoisonDamage();
-                    RewardEffectController.Instance.AddSquashBulletDamage();
+                    GameManager.Instance.RewardEffectManager.AddPoisonDamage();
+                    GameManager.Instance.RewardEffectManager.AddSquashBulletDamage();
                 }
                     break;
                 case RewardEffect.AddDamageSquash:
                 {
-                    RewardEffectController.Instance.AddSquashBulletDamage();
+                    GameManager.Instance.RewardEffectManager.AddSquashBulletDamage();
                 }
                     break;
                 case RewardEffect.AddDamageMushroom:
                 {
-                    RewardEffectController.Instance.AddPoisonDamage();
+                    GameManager.Instance.RewardEffectManager.AddPoisonDamage();
                 }
                     break;
                 case RewardEffect.AddPoisonRange:
                 {
-                    RewardEffectController.Instance.AddPoisonRange();
+                    GameManager.Instance.RewardEffectManager.AddPoisonRange();
                 }
                     break;
                 case RewardEffect.FasterFireRate:
                 {
-                    RewardEffectController.Instance.MakeShootTimerFaster();
+                    GameManager.Instance.RewardEffectManager.MakeShootTimerFaster();
                 }
                     break;
                 case RewardEffect.GiveMoreHealth:
                 {
-                    RewardEffectController.Instance.AddHealEffect();
+                    GameManager.Instance.RewardEffectManager.AddHealEffect();
                 }
                     break;
                 case RewardEffect.PlantFaster:
                 {
-                    RewardEffectController.Instance.AddPlantSpeed();
-                    RewardEffectController.Instance.UpdatePlayer(PlayerGeneralController.Instance);
+                    GameManager.Instance.RewardEffectManager.AddPlantSpeed();
+                    GameManager.Instance.RewardEffectManager.UpdatePlayer(GameManager.Instance.PlayerGeneralController);
                 }
                     break;
                 case RewardEffect.SlowerPoison:
                 {
-                    RewardEffectController.Instance.AddSlowPoison();
+                    GameManager.Instance.RewardEffectManager.AddSlowPoison();
                 }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(m_rewardEffect), m_rewardEffect, null);
             }
             
-            UIManager.Instance.CloseRewardPanel(m_rewardListIndex);
+            GameManager.Instance.UIManager.CloseRewardPanel(m_rewardListIndex);
         }
     }
 }

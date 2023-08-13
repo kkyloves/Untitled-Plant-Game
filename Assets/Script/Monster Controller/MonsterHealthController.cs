@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using Script.Loot_Controller;
@@ -30,7 +31,7 @@ namespace Script.Monster_Controller
 
             SetInvulnerableAnimation();
         }
-
+        
         public void Reset()
         {
             if (m_isPoisoned)
@@ -86,8 +87,8 @@ namespace Script.Monster_Controller
                     m_isDead = true;
                     StopAllCoroutines();
                     
-                    LootItemSpawnController.Instance.SpawnLootItems(transform.position);
-                    UIManager.Instance.AddExp();
+                    GameManager.Instance.LootItemManager.SpawnLootItems(transform.position);
+                    GameManager.Instance.UIManager.AddExp();
                     
                     gameObject.SetActive(false);
                 }

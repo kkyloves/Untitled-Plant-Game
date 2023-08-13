@@ -8,25 +8,11 @@ namespace Script.Managers
 {
     public class UIManager : MonoBehaviour
     {
-        public static UIManager Instance;
-        
         [SerializeField] private PlayerHealthController m_playerHealthController;
         [SerializeField] private PlayerExpController m_playerExpController;
         [SerializeField] private RewardPanelController m_rewardPanelController;
         [SerializeField] private PlayerSeedContainerController m_playerSeedContainerController;
 
-        private void Awake()
-        {
-            if (Instance != null && Instance != this) 
-            { 
-                Destroy(this); 
-            } 
-            else 
-            { 
-                Instance = this; 
-            } 
-        }
-        
         public void HealPlayerHealth(float p_healAmount)
         {
             m_playerHealthController.HealPlayerHealth(p_healAmount);

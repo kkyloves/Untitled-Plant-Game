@@ -1,46 +1,35 @@
 using System.Collections.Generic;
-using System.Data.Common;
 using Script.Managers;
 using Script.Rewards_Controller;
 using Script.Scriptable_Object;
-using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Script.Loot_Controller
 {
-    public class LootItemSpawnController : MonoBehaviour
+    public class LootItemManager : MonoBehaviour
     {
-        public static LootItemSpawnController Instance;
         [SerializeField] private LootItemDetails[] m_lootItemDetails;
 
         private List<string> m_lootList;
 
         private void Awake()
         {
-            if (Instance != null && Instance != this) 
-            { 
-                Destroy(this); 
-            } 
-            else 
-            { 
-                Instance = this; 
-            }
-
             m_lootList = new List<string>();
             foreach (var loot in m_lootItemDetails)
             {
                 m_lootList.Add(loot.LootId);
             }
         }
-
+        
         public void SpawnLootItems(Vector2 p_spawnPosition)
         {
             var random = Random.Range(0, m_lootList.Count);
-            var loot = ObjectPoolManager.Instance.LootItemObjectPool.GetLootItem();
+            var loot = GameManager.Instance.ObjectPoolManager.LootItemObjectPool.GetLootItem();
             var lootItem = GetLootItemDetailsById(m_lootList[random]);
             
             loot.Init(lootItem, p_spawnPosition);
-            RewardEffectController.Instance.UpdateLoot(loot); 
+            GameManager.Instance.RewardEffectManager.UpdateLoot(loot); 
         }
         
         private LootItemDetails GetLootItemDetailsById(string p_lootItemId)

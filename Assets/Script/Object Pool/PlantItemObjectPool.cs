@@ -29,10 +29,5 @@ namespace Script.Object_Pool
             
             return null;
         }
-
-        private void ExtendObjectPool()
-        {
-            
-        }
     }
 }

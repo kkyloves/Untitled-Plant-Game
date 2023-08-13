@@ -44,8 +44,9 @@ namespace Script.Object_Pool
             if (m_canExpand) 
             {
                 var instantiatedObject = Instantiate(m_plantBulletPrefab, transform, true);
-                instantiatedObject.SetActive(false);
+                instantiatedObject.SetActive(true);
                 m_objectPoolList.Add(instantiatedObject);
+                instantiatedObject.SetActive(false);
                 return instantiatedObject;
             }
 

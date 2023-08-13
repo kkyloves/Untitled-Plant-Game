@@ -15,12 +15,12 @@ namespace Script.Monster_Controller
         private bool m_isCollidedWithThePlayer;
 
         private MonsterHealthController m_monsterHealthController;
-
+        
         private void Awake()
         {
             m_monsterHealthController = GetComponent<MonsterHealthController>();
         }
-
+        
         private void OnCollisionEnter2D(Collision2D p_collided)
         {
             if (!m_monsterHealthController.IsDead)
@@ -48,7 +48,7 @@ namespace Script.Monster_Controller
         {
             while (m_isCollidedWithThePlayer)
             {
-                UIManager.Instance.InflictPlayerHealth(m_monsterDamage);
+                GameManager.Instance.UIManager.InflictPlayerHealth(m_monsterDamage);
                 yield return new WaitForSeconds(TIMER_TO_INFLICT_DAMAGE_TO_PLAYER);
             }
         }

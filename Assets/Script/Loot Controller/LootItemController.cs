@@ -28,6 +28,8 @@ namespace Script.Loot_Controller
         private SpriteRenderer m_baseSpriteRenderer;
         private LootItemDetails m_lootItemDetails;
 
+        private UIManager m_uiManager;
+
         private float m_healAdd = 30f;
 
         private void Awake()
@@ -94,7 +96,7 @@ namespace Script.Loot_Controller
                                 break;
                             case LootType.Heal:
                                 {
-                                    UIManager.Instance.HealPlayerHealth(m_healAdd);
+                                    m_uiManager.HealPlayerHealth(m_healAdd);
                                 }
                                 break;
                             default:
