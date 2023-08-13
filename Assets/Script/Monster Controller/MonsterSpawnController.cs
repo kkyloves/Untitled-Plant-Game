@@ -1,5 +1,6 @@
 using Script.Managers;
 using Script.Player_Controller;
+using Script.Rewards_Controller;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -23,9 +24,11 @@ namespace Script.Monster_Controller
             monster.transform.position = new Vector2(spawnPoint.position.x, spawnPoint.position.y);
 
             var player = PlayerGeneralController.Instance;
-            monster.GetComponent<MonsterMovementController>().SetTarget(player.transform);
-            monster.GetComponent<MonsterDamageController>().SetPlayerHealthController(player);
+            var monsterMovementController = monster.GetComponent<MonsterMovementController>();
+            monsterMovementController.SetTarget(player.transform);
             monster.GetComponent<MonsterHealthController>().Reset();
+            
+            RewardEffectController.Instance.UpdateMonster(monsterMovementController);
 
             monster.SetActive(true);
         }

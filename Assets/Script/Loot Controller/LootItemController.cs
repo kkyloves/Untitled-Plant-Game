@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using Script.Managers;
 using Script.Player_Controller;
 using Script.Scriptable_Object;
 using UnityEngine;
@@ -27,10 +28,17 @@ namespace Script.Loot_Controller
         private SpriteRenderer m_baseSpriteRenderer;
         private LootItemDetails m_lootItemDetails;
 
+        private float m_healAdd = 30f;
+
         private void Awake()
         {
             m_baseSpriteRenderer = GetComponent<SpriteRenderer>();
             m_circleCollider2D = GetComponent<CircleCollider2D>();
+        }
+
+        public void SetHealEffect(float p_healEffect)
+        {
+            m_healAdd = p_healEffect;
         }
 
         public void Init(LootItemDetails p_lootItemDetails, Vector2 p_spawnPosition)
@@ -86,7 +94,7 @@ namespace Script.Loot_Controller
                                 break;
                             case LootType.Heal:
                                 {
-                                    player.HealPlayerHealth(50);
+                                    UIManager.Instance.HealPlayerHealth(m_healAdd);
                                 }
                                 break;
                             default:

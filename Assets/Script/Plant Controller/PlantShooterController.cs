@@ -13,8 +13,9 @@ namespace Script.Plant_Controller
         private Transform m_monsterPosition;
         private bool m_canShoot = true;
 
-        private float m_canShootTimer = 0.5f;
+        private float m_canShootTimer = 0.8f;
         private bool m_isProjectile = true;
+        private float m_damage = 20f;
 
         public void Init()
         {
@@ -22,14 +23,19 @@ namespace Script.Plant_Controller
             m_canShoot = true;
         }
 
-        public void TurnOnProjectileEffect()
+        public void SetProjectileEffect(bool p_isProjectile)
         {
-            m_isProjectile = true;
+            m_isProjectile = p_isProjectile;
         }
 
-        public void MakeShootTimerFaster()
+        public void SetDamage(float p_damage)
         {
-            m_canShootTimer -= 0.1f;
+            m_damage = p_damage;
+        }
+
+        public void SetShootTimerFaster(float p_fireRate)
+        {
+            m_canShootTimer = p_fireRate;
         }
 
         private void FireBullet()
@@ -46,7 +52,7 @@ namespace Script.Plant_Controller
                         var bullet = ObjectPoolManager.Instance.PlantBulletItemObjectPool.GetPlantBulletItem();
                         bullet.transform.position = new Vector2(transform.position.x, transform.position.y);
                         
-                        bullet.Init(updatedMonsterPosition,transform.position);
+                        bullet.Init(updatedMonsterPosition,transform.position, m_damage);
                     }
                 }
                 else
@@ -54,7 +60,7 @@ namespace Script.Plant_Controller
                     var bullet = ObjectPoolManager.Instance.PlantBulletItemObjectPool.GetPlantBulletItem();
                     bullet.transform.position = new Vector2(transform.position.x, transform.position.y);
                     
-                    bullet.Init(m_monsterPosition.position,transform.position);
+                    bullet.Init(m_monsterPosition.position,transform.position, m_damage);
                 }
             }
             else

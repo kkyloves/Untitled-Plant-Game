@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Script.Rewards_Controller;
 using Script.Scriptable_Object;
 using UnityEngine;
 
@@ -39,12 +40,15 @@ namespace Script.Plant_Controller
                         m_plantPoisonController.gameObject.SetActive(false);
                         
                         m_plantShooterController.Init();
+                        RewardEffectController.Instance.UpdateSquash(m_plantShooterController);
                     }
                     break;
                 case PlantSkill.Poison:
                     {
                         m_plantShooterController.gameObject.SetActive(false);
                         m_plantPoisonController.gameObject.SetActive(true);
+                        
+                        RewardEffectController.Instance.UpdateMushroom(m_plantPoisonController);
                     }
                     break;
                 default:

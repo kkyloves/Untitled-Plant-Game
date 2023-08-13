@@ -6,20 +6,31 @@ namespace Script.Plant_Controller
 {
     public class PlantPoisonController : MonoBehaviour
     {
-        [SerializeField] private float m_damage;
-        [SerializeField] private float m_maxIncreaseRange = 5f;
+        private float m_damage;
+        private float m_maxRange = 5f;
+        
         private void Awake()
         {
             PlayPoisonAnimation();
         }
 
+        public void SetDamage(float p_damage)
+        {
+            m_damage = p_damage;
+        }
+
+        public void SetRange(float p_range)
+        {
+            m_maxRange = p_range;
+        }
+
         private void PlayPoisonAnimation()
         {
-            transform.DOScale(m_maxIncreaseRange -1f, 0f);
+            transform.DOScale(m_maxRange -1f, 0f);
 
-            transform.DOScale(m_maxIncreaseRange, 1f).OnComplete(() =>
+            transform.DOScale(m_maxRange, 1f).OnComplete(() =>
             {
-                transform.DOScale(m_maxIncreaseRange - 1f, 1f);
+                transform.DOScale(m_maxRange - 1f, 1f);
             }).SetLoops(-1, LoopType.Yoyo);
         }
 

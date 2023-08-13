@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using Script.Managers;
+using Script.Rewards_Controller;
 using Script.Scriptable_Object;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -37,7 +38,9 @@ namespace Script.Loot_Controller
             var random = Random.Range(0, m_lootList.Count);
             var loot = ObjectPoolManager.Instance.LootItemObjectPool.GetLootItem();
             var lootItem = GetLootItemDetailsById(m_lootList[random]);
+            
             loot.Init(lootItem, p_spawnPosition);
+            RewardEffectController.Instance.UpdateLoot(loot); 
         }
         
         private LootItemDetails GetLootItemDetailsById(string p_lootItemId)
@@ -52,6 +55,11 @@ namespace Script.Loot_Controller
             
             Debug.Log("No Loot Item with this Id found!");
             return null;
+        }
+
+        public void AddLootChance(string p_lootId)
+        {
+            m_lootList.Add(p_lootId);
         }
     }
 }

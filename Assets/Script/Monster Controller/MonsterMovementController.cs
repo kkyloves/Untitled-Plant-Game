@@ -12,12 +12,19 @@ namespace Script.Monster_Controller
         
         private Transform m_playerTransformTarget;
         
+        private float m_movementSlowEffect = 2f;
+        
         private void Awake()
         {
             m_monsterRigidbody = GetComponent<Rigidbody2D>();
             m_spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
+        public void SetSlowEffect(float p_slowEffect)
+        {
+            m_movementSlowEffect = p_slowEffect;
+        }
+        
         public void SetTarget(Transform p_playerTarget)
         {
             if (m_playerTransformTarget == null)
@@ -46,12 +53,12 @@ namespace Script.Monster_Controller
 
         public void ApplyPoisonEffect()
         {
-            m_movementSpeed /= 2;
+            m_movementSpeed /= m_movementSlowEffect;
         }
 
         public void ResetPoisonEffect()
         {
-            m_movementSpeed *= 2;
+            m_movementSpeed *= m_movementSlowEffect;
         }
     }
 }

@@ -18,6 +18,11 @@ namespace Script.Player_Controller
             m_playerAnimationController = GetComponent<PlayerAnimationController>();
         }
 
+        public void SetMovementSpeed(float p_speed)
+        {
+            m_playerMovementSpeed = p_speed;
+        }
+
         private void Update()
         {
             var horizontalValue = m_movementInput.x;

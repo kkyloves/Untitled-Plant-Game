@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Script.Managers;
 using Script.Player_Controller;
 using UnityEngine;
 
@@ -9,9 +10,7 @@ namespace Script.Monster_Controller
     {
         private const float TIMER_TO_INFLICT_DAMAGE_TO_PLAYER = 0.3F;
         private const string PLAYER_TAG = "PlayerCharacter";
-
-        private PlayerGeneralController m_playerGeneralController;
-
+        
         private float m_monsterDamage = 5f;
         private bool m_isCollidedWithThePlayer;
 
@@ -22,11 +21,6 @@ namespace Script.Monster_Controller
             m_monsterHealthController = GetComponent<MonsterHealthController>();
         }
 
-        public void SetPlayerHealthController(PlayerGeneralController p_playerGeneralController)
-        {
-            m_playerGeneralController = p_playerGeneralController;
-        }
-        
         private void OnCollisionEnter2D(Collision2D p_collided)
         {
             if (!m_monsterHealthController.IsDead)
@@ -54,7 +48,7 @@ namespace Script.Monster_Controller
         {
             while (m_isCollidedWithThePlayer)
             {
-                m_playerGeneralController.InflictPlayerHealth(m_monsterDamage);
+                UIManager.Instance.InflictPlayerHealth(m_monsterDamage);
                 yield return new WaitForSeconds(TIMER_TO_INFLICT_DAMAGE_TO_PLAYER);
             }
         }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Script.Player_Controller
@@ -6,13 +5,16 @@ namespace Script.Player_Controller
     public class PlayerAnimationController : MonoBehaviour
     {
         private Animator m_playerAnimator;
+        
         private static readonly int PlayerHorizontal = Animator.StringToHash("PlayerHorizontal");
         private static readonly int PlayerVertical = Animator.StringToHash("PlayerVertical");
         private static readonly int PlayerSpeed = Animator.StringToHash("PlayerSpeed");
         private static readonly int PlayerPlanting = Animator.StringToHash("PlayerPlanting");
         private static readonly int StopPlanting = Animator.StringToHash("StopPlanting");
 
-
+        private float m_plantAnimationSpeed = 1f;
+        private static readonly int PlayerPlantSpeed = Animator.StringToHash("PlayerPlantSpeed");
+        
         private void Awake()
         {
             m_playerAnimator = GetComponent<Animator>();
@@ -33,6 +35,12 @@ namespace Script.Player_Controller
         public void ResetPlantingAnimation()
         {
             m_playerAnimator.SetTrigger(StopPlanting);
+        }
+
+        public void SetPlayerPlantAnimationSpeed(float p_plantAnimationSpeed)
+        {
+            m_plantAnimationSpeed = p_plantAnimationSpeed;
+            m_playerAnimator.SetFloat(PlayerPlantSpeed, m_plantAnimationSpeed);
         }
     }
 }

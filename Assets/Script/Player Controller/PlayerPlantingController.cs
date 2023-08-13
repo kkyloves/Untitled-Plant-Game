@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using Script.Managers;
+using Script.Rewards_Controller;
 using Script.Scriptable_Object;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -39,8 +40,6 @@ namespace Script.Player_Controller
         private PlantContainer m_currentChosenPlantContainer;
         private int m_currentChosenIndexPlantContainer;
         
-        private bool m_isPlanting;
-
         private void Awake()
         {
             m_playerAnimationController = GetComponent<PlayerAnimationController>();
@@ -73,6 +72,7 @@ namespace Script.Player_Controller
             if (plantContainer != null)
             {
                 plantContainer.PlantSeedCount += p_seedCount;
+                UIManager.Instance.UpdateSeedCount(plantContainer.PlantItemDetails.PlantSkill, plantContainer.PlantSeedCount);
             }
             else
             {
@@ -85,6 +85,7 @@ namespace Script.Player_Controller
                 var needToInitialize = m_plantContainer.Count <= 0;
 
                 m_plantContainer.Add(container);
+                UIManager.Instance.UpdateSeedCount(container.PlantItemDetails.PlantSkill, container.PlantSeedCount);
                 
                 if (needToInitialize)
                 {
@@ -116,8 +117,8 @@ namespace Script.Player_Controller
             var plant = ObjectPoolManager.Instance.PlantItemObjectPool.GetPlantItem();
             if (plant)
             {
-                m_isPlanting = false;
                 var plantItemDetails = m_currentChosenPlantContainer.PlantItemDetails;
+                
                 plant.Init(plantItemDetails.FullGrownSprite, m_plantPosition.position, plantItemDetails.PlantSkill);
 
                 m_currentChosenPlantContainer.PlantSeedCount--;
@@ -191,7 +192,6 @@ namespace Script.Player_Controller
             // {
             if (m_plantContainer.Count > 0)
             {
-                m_isPlanting = true;
                 m_sproutSpriteRenderer.sprite = m_currentChosenPlantContainer.PlantItemDetails.PlantSproutSprite;
                 m_playerAnimationController.PlayPlantingAnimation();
             }

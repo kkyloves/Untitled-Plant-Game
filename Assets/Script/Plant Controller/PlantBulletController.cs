@@ -11,16 +11,19 @@ namespace Script.Plant_Controller
         private bool m_isDeployed;
         public bool IsDeployed => m_isDeployed;
 
+        private float m_damage;
+        
 
         private void Awake()
         {
             m_rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
-        public void Init(Vector3 p_targetMonster, Vector2 p_position)
+        public void Init(Vector3 p_targetMonster, Vector2 p_position, float p_damage)
         {
             m_isDeployed = true;
-            
+
+            m_damage = p_damage;
             transform.position = new Vector2(p_position.x, p_position.y);
             gameObject.SetActive(true);
             
@@ -32,7 +35,7 @@ namespace Script.Plant_Controller
         {
             if (p_collided.CompareTag("Monster"))
             {
-                p_collided.GetComponent<MonsterHealthController>().DamageMonster(30f, false);
+                p_collided.GetComponent<MonsterHealthController>().DamageMonster(m_damage, false);
                 Disappear();
             }
             
