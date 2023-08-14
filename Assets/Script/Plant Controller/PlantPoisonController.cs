@@ -7,7 +7,7 @@ namespace Script.Plant_Controller
     public class PlantPoisonController : MonoBehaviour
     {
         private float m_damage;
-        private float m_maxRange = 5f;
+        private float m_maxRange = 1.5f;
         
         private void Awake()
         {

@@ -2,11 +2,8 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Script.Managers;
-using Script.Plant_Controller;
-using Script.Rewards_Controller;
 using Script.Scriptable_Object;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -23,9 +20,8 @@ namespace Script.Player_Controller
 
     public class PlayerPlantingController : MonoBehaviour
     {
-        private const int INITIAL_SEED_COUNT = 2;
+        private const int INITIAL_SEED_COUNT = 5;
 
-        [SerializeField] private PlantItemDetails[] m_plantItemDetails;
         [SerializeField] private SpriteRenderer m_sproutSpriteRenderer;
         
         [SerializeField] private Sprite m_warningNoSeedSign;
@@ -36,6 +32,9 @@ namespace Script.Player_Controller
         
         [SerializeField] private GameObject m_angelPlants;
         [SerializeField] private Transform m_plantPosition;
+        
+        [SerializeField] private PlantItemDetails[] m_plantItemDetails;
+
 
         private PlayerAnimationController m_playerAnimationController;
         public List<PlantContainer> m_plantContainer;
@@ -53,17 +52,18 @@ namespace Script.Player_Controller
         private void InitializePlantSeeds()
         {
             m_plantContainer = new List<PlantContainer>();
-            foreach (var plantItemDetail in m_plantItemDetails)
+
+            foreach (var plantItemDetails in m_plantItemDetails)
             {
                 PlantContainer plantContainer = new()
                 {
-                    PlantItemDetails = plantItemDetail,
+                    PlantItemDetails = plantItemDetails,
                     PlantSeedCount = INITIAL_SEED_COUNT
                 };
 
                 m_plantContainer.Add(plantContainer);
             }
-
+            
             m_currentChosenIndexPlantContainer = 0;
             m_currentChosenPlantContainer = m_plantContainer[m_currentChosenIndexPlantContainer];
             SetPlantChoiceUI();
@@ -127,6 +127,8 @@ namespace Script.Player_Controller
                 plant.Init(plantItemDetails.FullGrownSprite, m_plantPosition.position, plantItemDetails.PlantSkill);
 
                 m_currentChosenPlantContainer.PlantSeedCount--;
+                GameManager.Instance.UIManager.UpdateSeedCount(m_currentChosenPlantContainer.PlantItemDetails.PlantSkill, m_currentChosenPlantContainer.PlantSeedCount);
+
                 if (m_currentChosenPlantContainer.PlantSeedCount <= 0)
                 {
                     m_plantContainer.Remove(m_currentChosenPlantContainer);
@@ -144,8 +146,6 @@ namespace Script.Player_Controller
                         m_angelPlants.SetActive(true);
                     }
                 }
-                
-                GameManager.Instance.UIManager.UpdateSeedCount(m_currentChosenPlantContainer.PlantItemDetails.PlantSkill, m_currentChosenPlantContainer.PlantSeedCount);
             }
             else
             {

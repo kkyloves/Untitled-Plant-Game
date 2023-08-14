@@ -15,7 +15,7 @@ namespace Script.Rewards_Controller
         private float m_squashBulletDamage = 20f;
         
         //mushroom related rewards
-        private float m_poisonRange = 5f;
+        private float m_poisonRange = 1.5f;
         private float m_poisonDamage = 5f;
         
         //monster related rewards

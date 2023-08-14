@@ -1,4 +1,5 @@
 using Script.Loot_Controller;
+using Script.Monster_Controller;
 using Script.Player_Controller;
 using Script.Rewards_Controller;
 using UnityEngine;
@@ -23,6 +24,8 @@ namespace Script.Managers
 
         [SerializeField] private LootItemManager m_lootItemManager;
         public LootItemManager LootItemManager => m_lootItemManager;
+
+        [SerializeField] private MonsterSpawnManager m_monsterSpawnManager;
         
         private void Awake()
         {
@@ -34,6 +37,12 @@ namespace Script.Managers
             { 
                 Instance = this; 
             } 
+        }
+
+        private void Start()
+        {
+            Time.timeScale = 1f;
+            m_monsterSpawnManager.StartMonsterSpawn();
         }
     }
 }

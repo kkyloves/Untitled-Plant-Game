@@ -13,10 +13,14 @@ namespace Script.UI_Controller
 
         private float m_fpsUpdateTimer = 0.2f;
         private float m_currentFps;
-
         private float m_timerValue;
-        bool srt;
 
+        private int m_currentMinutes;
+        public int CurrentMinutes => m_currentMinutes;
+        
+        private int m_currentSeconds;
+        public int CurrentSeconds => m_currentSeconds;
+        
         private void UpdateFPSCounter()
         {
             m_fpsUpdateTimer -= Time.deltaTime;
@@ -32,24 +36,24 @@ namespace Script.UI_Controller
         {
             m_timerValue += Time.deltaTime;
 
-            var minutes = Mathf.FloorToInt(m_timerValue / 60);
-            if (minutes < 10)
+            m_currentMinutes = Mathf.FloorToInt(m_timerValue / 60);
+            if (m_currentMinutes < 10)
             {
-                m_timerCounterMinutes.text = "0" + minutes.ToString(CultureInfo.InvariantCulture);
+                m_timerCounterMinutes.text = "0" + m_currentMinutes.ToString(CultureInfo.InvariantCulture);
             }
             else
             {
-                m_timerCounterMinutes.text = minutes.ToString(CultureInfo.InvariantCulture);
+                m_timerCounterMinutes.text = m_currentMinutes.ToString(CultureInfo.InvariantCulture);
             }
 
-            var seconds = Mathf.FloorToInt(m_timerValue % 60);
-            if (seconds < 10)
+            m_currentSeconds = Mathf.FloorToInt(m_timerValue % 60);
+            if (m_currentSeconds < 10)
             {
-                m_timerCounterSeconds.text = "0" + seconds.ToString(CultureInfo.InvariantCulture);
+                m_timerCounterSeconds.text = "0" + m_currentSeconds.ToString(CultureInfo.InvariantCulture);
             }
             else
             {
-                m_timerCounterSeconds.text = seconds.ToString(CultureInfo.InvariantCulture);
+                m_timerCounterSeconds.text = m_currentSeconds.ToString(CultureInfo.InvariantCulture);
             }
         }
 

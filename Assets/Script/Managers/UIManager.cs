@@ -12,6 +12,8 @@ namespace Script.Managers
         [SerializeField] private PlayerExpController m_playerExpController;
         [SerializeField] private RewardPanelController m_rewardPanelController;
         [SerializeField] private PlayerSeedContainerController m_playerSeedContainerController;
+        [SerializeField] private ResultPanelController m_resultPanelController;
+        [SerializeField] private CounterController m_counterController;
 
         public void HealPlayerHealth(float p_healAmount)
         {
@@ -39,10 +41,35 @@ namespace Script.Managers
             m_rewardPanelController.CloseRewardPanel();
         }
         
-
         public void UpdateSeedCount(PlantSkill p_plantSkill, int p_seedCount)
         {
             m_playerSeedContainerController.UpdateSeedCount(p_plantSkill, p_seedCount);
         }
+
+        public void OpenResultPanel()
+        {
+            m_resultPanelController.OpenResultPanel();
+        }
+
+        public void AddChickenKilledCount()
+        {
+            m_resultPanelController.AddChickenKilledCount();
+        }
+        
+        public void AddRewardsAcquiredCount()
+        {
+            m_resultPanelController.AddRewardsAcquiredCount();
+        }
+
+        public int GetCurrentMinuteTimerCount()
+        {
+            return m_counterController.CurrentMinutes;
+        }
+        
+        public int GetCurrentSecondsTimerCount()
+        {
+            return m_counterController.CurrentSeconds;
+        }
     }
+    
 }

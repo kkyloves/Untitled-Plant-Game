@@ -98,6 +98,7 @@ namespace Script.UI_Controller
                     throw new ArgumentOutOfRangeException(nameof(m_rewardEffect), m_rewardEffect, null);
             }
             
+            GameManager.Instance.UIManager.AddRewardsAcquiredCount();
             GameManager.Instance.UIManager.CloseRewardPanel(m_rewardListIndex);
         }
     }

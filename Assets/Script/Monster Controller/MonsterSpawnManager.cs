@@ -6,10 +6,13 @@ namespace Script.Monster_Controller
 {
     public class MonsterSpawnManager : MonoBehaviour
     {
+        private const int BASE_ADDITIONAL_MONSTER = 1;
         [SerializeField] private Transform[] m_monsterSpawnPoints;
-        private float m_spawnSpeed = 1f;
         
-        private void Awake()
+        private int m_spawnSpeed = 1;
+        private int m_totalSpawnMonster;
+        
+        public void StartMonsterSpawn()
         {
             InvokeRepeating(nameof(SpawnMonster), 0f, 1f);
         }
@@ -31,6 +34,12 @@ namespace Script.Monster_Controller
 
                 GameManager.Instance.RewardEffectManager.UpdateMonster(monsterMovementController);
 
+                m_totalSpawnMonster++;
+                if (m_totalSpawnMonster % 100 == 0)
+                {
+                    m_spawnSpeed += BASE_ADDITIONAL_MONSTER;
+                }
+                
                 monster.SetActive(true);
             }
         }

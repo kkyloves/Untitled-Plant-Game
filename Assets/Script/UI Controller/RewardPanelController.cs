@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Script.Managers;
 using Script.Scriptable_Object;
 using UnityEngine;
 
@@ -11,25 +12,28 @@ namespace Script.UI_Controller
 
         public void OpenRewardPanel()
         {
-            for (var i = 0; i < m_rewardPanelItems.Length; i++)
+            if (m_rewardItemDetailsArray.Count > 0)
             {
-                var reward = m_rewardPanelItems[i];
-                
-                if (m_rewardItemDetailsArray.Count > 0)
+                for (var i = 0; i < m_rewardPanelItems.Length; i++)
                 {
-                    var random = Random.Range(0, m_rewardItemDetailsArray.Count);
-                    reward.Init(m_rewardItemDetailsArray[random], i);
+                    var reward = m_rewardPanelItems[i];
 
-                    reward.gameObject.SetActive(true);
+                    if (m_rewardItemDetailsArray.Count > 0)
+                    {
+                        var random = Random.Range(0, m_rewardItemDetailsArray.Count);
+                        reward.Init(m_rewardItemDetailsArray[random], i);
+
+                        reward.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        reward.gameObject.SetActive(false);
+                    }
                 }
-                else
-                {
-                    reward.gameObject.SetActive(false);
-                }
+
+                gameObject.SetActive(true);
+                Time.timeScale = 0f;
             }
-
-            gameObject.SetActive(true);
-            Time.timeScale = 0f;
         }
 
         public void RemoveReward(int p_index)

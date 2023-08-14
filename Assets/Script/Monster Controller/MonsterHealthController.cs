@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using DG.Tweening;
-using Script.Loot_Controller;
 using Script.Managers;
-using Script.UI_Controller;
 using UnityEngine;
 
 namespace Script.Monster_Controller
@@ -39,7 +36,7 @@ namespace Script.Monster_Controller
                 ResetPoisonEffect();
             }
 
-            m_spriteRenderer.DOFade(1f, 0f);
+            // m_spriteRenderer.DOFade(1f, 0f);
             m_hitEffectTween.Pause();
             m_totalHealth = 100;
             m_isDead = false;
@@ -89,6 +86,11 @@ namespace Script.Monster_Controller
                     
                     GameManager.Instance.LootItemManager.SpawnLootItems(transform.position);
                     GameManager.Instance.UIManager.AddExp();
+                    GameManager.Instance.UIManager.AddChickenKilledCount();
+                    
+                    m_hitEffectTween.Restart();
+                    m_spriteRenderer.DOFade(1f, 0f);
+                    m_hitEffectTween.Pause();
                     
                     gameObject.SetActive(false);
                 }
@@ -97,8 +99,10 @@ namespace Script.Monster_Controller
 
         private IEnumerator StopHitEffect()
         {
-           yield return new WaitForSeconds(1f);
-           m_hitEffectTween.Pause();
+            yield return new WaitForSeconds(1f);
+            m_hitEffectTween.Restart();
+            m_spriteRenderer.DOFade(1f, 0f);
+            m_hitEffectTween.Pause();
         }
 
         private IEnumerator ContinuousDamage()

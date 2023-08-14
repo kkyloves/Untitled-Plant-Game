@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Karlo
-  productName: Untitled Plant Game
+  productName: Crops VS Chickens
   defaultCursor: {fileID: 2800000, guid: 60537a4c57b7e2c4b9a29b3691c70bbb, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.005
+  bundleVersion: 0.007
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -273,7 +273,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: bde6195ddf8a4144c9b2ab55c64eaa21, type: 3}
+      m_Icon: {fileID: 2800000, guid: d432cf4e97e5a584abf86b221e00c483, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

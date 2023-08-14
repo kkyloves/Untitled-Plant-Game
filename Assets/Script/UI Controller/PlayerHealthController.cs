@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Script.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +27,11 @@ namespace Script.Player_Controller
         {
             m_playerCurrentHealth -= p_damage;
             UpdatePlayerHealthBar();
+
+            if (m_playerCurrentHealth <= 0)
+            {
+                GameManager.Instance.UIManager.OpenResultPanel();
+            }
         }
 
         public void HealPlayerHealth(float p_healAmount)

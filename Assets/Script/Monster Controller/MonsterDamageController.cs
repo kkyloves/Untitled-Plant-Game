@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using Script.Managers;
-using Script.Player_Controller;
 using UnityEngine;
 
 namespace Script.Monster_Controller
@@ -9,11 +7,10 @@ namespace Script.Monster_Controller
     public class MonsterDamageController : MonoBehaviour
     {
         private const float TIMER_TO_INFLICT_DAMAGE_TO_PLAYER = 0.3F;
+        private const float MONSTER_DAMAGE = 2f;
         private const string PLAYER_TAG = "PlayerCharacter";
         
-        private float m_monsterDamage = 5f;
         private bool m_isCollidedWithThePlayer;
-
         private MonsterHealthController m_monsterHealthController;
         
         private void Awake()
@@ -48,7 +45,7 @@ namespace Script.Monster_Controller
         {
             while (m_isCollidedWithThePlayer)
             {
-                GameManager.Instance.UIManager.InflictPlayerHealth(m_monsterDamage);
+                GameManager.Instance.UIManager.InflictPlayerHealth(MONSTER_DAMAGE);
                 yield return new WaitForSeconds(TIMER_TO_INFLICT_DAMAGE_TO_PLAYER);
             }
         }
