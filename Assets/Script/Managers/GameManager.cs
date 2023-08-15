@@ -26,6 +26,8 @@ namespace Script.Managers
         public LootItemManager LootItemManager => m_lootItemManager;
 
         [SerializeField] private MonsterSpawnManager m_monsterSpawnManager;
+        public MonsterSpawnManager MonsterSpawnManager => m_monsterSpawnManager;
+
         
         private void Awake()
         {

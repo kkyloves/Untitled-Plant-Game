@@ -85,6 +85,7 @@ namespace Script.Monster_Controller
                     StopAllCoroutines();
                     
                     GameManager.Instance.LootItemManager.SpawnLootItems(transform.position);
+                    GameManager.Instance.MonsterSpawnManager.DeductActiveCount();
                     GameManager.Instance.UIManager.AddExp();
                     GameManager.Instance.UIManager.AddChickenKilledCount();
                     
