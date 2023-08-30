@@ -86,6 +86,10 @@ namespace Script.Player_Controller
                     PlantSeedCount = p_seedCount
                 };
 
+                PlantContainer plantContainer2 = new PlantContainer();
+                container.PlantItemDetails = p_lootedPlantItemDetails;
+                container.PlantSeedCount = p_seedCount;
+
                 var needToInitialize = m_plantContainer.Count <= 0;
 
                 m_plantContainer.Add(container);

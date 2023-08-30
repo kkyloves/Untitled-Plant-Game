@@ -16,7 +16,7 @@ namespace Script.Plant_Controller
         private bool m_canShoot = true;
 
         private float m_canShootTimer = 0.8f;
-        private bool m_isProjectile = true;
+        private bool m_isProjectile = false;
         private float m_damage = 20f;
         
         public void Init()
